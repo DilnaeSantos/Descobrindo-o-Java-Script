@@ -6,23 +6,27 @@
     <link rel="stylesheet" href="style.css" />
     <title>Ordenação e Mistura</title>
   </head>
-  <body>
+  <body class="body">
     <section class="containerPai">
-      <div class="containerFilho1">
+      <div class="containerFilho">
         <label for="valor">Valor:</label>
         <input type="number" id="valor" />
-        <button type="button" onclick="add()">Adicionar</button>
-        <button type="button" onclick="limparLista()">Limpar Lista</button>
+        <div>
+          <button type="button" onclick="add()">Adicionar</button>
+          <button type="button" onclick="limparLista()">Limpar Lista</button>
+        </div>
       </div>
-      <div class="containerFilho2">
+      <div class="containerFilho">
         <label for="algoritmo">Escolha um algoritmo:</label>
         <select id="algoritmo">
           <option value="bubble">Bubble Sort</option>
           <option value="selection">Selection Sort</option>
           <option value="quick">Quick Sort</option>
         </select>
+        <div>
         <button type="button" onclick="ordenar()">Ordenar</button>
         <button type="button" onclick="misturar()">Misturar</button>
+      </div>
       </div>
       <ul id="valores"></ul>
     </section>
