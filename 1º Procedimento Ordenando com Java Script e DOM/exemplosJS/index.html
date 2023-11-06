@@ -12,8 +12,8 @@
         <label for="valor">Valor:</label>
         <input type="number" id="valor" />
         <div>
-          <button type="button" onclick="add()">Adicionar</button>
-          <button type="button" onclick="limparLista()">Limpar Lista</button>
+          <button type="button" id="adicionar">Adicionar</button>
+          <button type="button" id="limpar">Limpar Lista</button>
         </div>
       </div>
       <div class="containerFilho">
@@ -24,82 +24,13 @@
           <option value="quick">Quick Sort</option>
         </select>
         <div>
-          <button type="button" onclick="ordenar()">Ordenar</button>
-          <button type="button" onclick="misturar()">Misturar</button>
+          <button type="button" id="ordenar">Ordenar</button>
+          <button type="button" id="misturar">Misturar</button>
         </div>
       </div>
       <ul id="valores"></ul>
     </section>
 
-    <script>
-      // Inicialize a lista de valores a partir do localStorage ou um array vazio.
-      const valores = JSON.parse(localStorage.getItem("valores")) || [];
-
-      function add() {
-        const valorInput = document.getElementById("valor");
-        const valor = parseFloat(valorInput.value);
-        if (!isNaN(valor)) {
-          valores.push(valor); // Adicione o valor ao array de valores.
-          saveToLocalStorage();
-          updateValoresList();
-          valorInput.value = ""; // Limpe o campo de entrada.
-        }
-      }
-
-      function limparLista() {
-        valores.length = 0;
-        saveToLocalStorage();
-        updateValoresList();
-      }
-
-      function ordenar() {
-        const algoritmo = document.getElementById("algoritmo").value;
-
-        if (algoritmo === "bubble") {
-          bubbleSort(valores);
-        } else if (algoritmo === "selection") {
-          selectionSort(valores);
-        } else if (algoritmo === "quick") {
-          quickSort(valores, 0, valores.length - 1);
-        }
-
-        saveToLocalStorage();
-        updateValoresList();
-      }
-
-      function misturar() {
-        shuffle(valores);
-        saveToLocalStorage();
-        updateValoresList();
-      }
-
-      function updateValoresList() {
-        const ul = document.getElementById("valores");
-        ul.innerHTML = ""; // Limpe a lista.
-
-        // Adicione os valores atualizados à lista.
-        for (const valor of valores) {
-          const li = document.createElement("li");
-          li.appendChild(document.createTextNode(valor));
-          ul.appendChild(li);
-        }
-      }
-
-      function saveToLocalStorage() {
-        localStorage.setItem("valores", JSON.stringify(valores));
-      }
-
-      // Implementação simples da função de mistura (shuffle).
-      function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-      }
-
-      // Carregue os valores iniciais da lista.
-      updateValoresList();
-    </script>
-    <script src="../exemplosJS/ordenando.js"></script>
+    <script src="./ordenando.js"></script>
   </body>
 </html>
