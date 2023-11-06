@@ -24,25 +24,25 @@
           <option value="quick">Quick Sort</option>
         </select>
         <div>
-        <button type="button" onclick="ordenar()">Ordenar</button>
-        <button type="button" onclick="misturar()">Misturar</button>
-      </div>
+          <button type="button" onclick="ordenar()">Ordenar</button>
+          <button type="button" onclick="misturar()">Misturar</button>
+        </div>
       </div>
       <ul id="valores"></ul>
     </section>
 
     <script>
-      
+      // Inicialize a lista de valores a partir do localStorage ou um array vazio.
       const valores = JSON.parse(localStorage.getItem("valores")) || [];
 
       function add() {
         const valorInput = document.getElementById("valor");
         const valor = parseFloat(valorInput.value);
         if (!isNaN(valor)) {
-          valores.push(valor);
+          valores.push(valor); // Adicione o valor ao array de valores.
           saveToLocalStorage();
           updateValoresList();
-          valorInput.value = "";
+          valorInput.value = ""; // Limpe o campo de entrada.
         }
       }
 
@@ -87,6 +87,14 @@
 
       function saveToLocalStorage() {
         localStorage.setItem("valores", JSON.stringify(valores));
+      }
+
+      // Implementação simples da função de mistura (shuffle).
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
       }
 
       // Carregue os valores iniciais da lista.
