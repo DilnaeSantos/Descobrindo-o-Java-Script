@@ -32,17 +32,17 @@
     </section>
 
     <script>
-      // Inicialize a lista de valores a partir do localStorage ou um array vazio.
+      
       const valores = JSON.parse(localStorage.getItem("valores")) || [];
 
       function add() {
         const valorInput = document.getElementById("valor");
         const valor = parseFloat(valorInput.value);
         if (!isNaN(valor)) {
-          valores.push(valor); // Adicione o valor ao array de valores.
+          valores.push(valor);
           saveToLocalStorage();
           updateValoresList();
-          valorInput.value = ""; // Limpe o campo de entrada.
+          valorInput.value = "";
         }
       }
 
